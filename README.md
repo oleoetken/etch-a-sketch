@@ -1,1 +1,2 @@
-# etch-a-sketch
+In this project I will demonstrate DOM skills to create Etch-a-Sketch. 
+For this I will be using a bit of HTML and a bit CSS for the style and use Javascript for everything else to complete the project 
