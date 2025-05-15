@@ -1,43 +1,30 @@
 const container = document.querySelector(".container");
 
-
-const button = document.querySelector(".button");
-const btn = document.createElement("button");
-btn.textContent = "Set squares";
-
-function createGrid(squareNumber) {
-
-    for (let i = 0; i < squareNumber * squareNumber; i++) {
-        const div = document.createElement("div");
-        div.classList.add = "grid";
-        container.appendChild(div);
+function changeGridSize() {
+    let squares = prompt("Input a number between 1 and 100");
+    if (squares > 100 || squares < 1) {
+        alert("Unable to create this grid");
     }
-    
-    const divChanges = document.querySelectorAll(".container>div");
-    
-        divChanges.forEach((divChange) => {
-            divChange.addEventListener("mouseover", () => {
-                divChange.style.cssText = "background: black";
-            }); 
-        });
-
+    else {
+        createGrid(squares);
+    }
 }
 
-createGrid(16);
+function createGrid(size) {
+    let gridCellSize = 1000 / size;
+    for (let i = 0; i < size * size; i++) {
+        const gridCell = document.createElement("div");
+        gridCell.classList.add("grid-item");
+        gridCell.style.width = `${gridCellSize}px`
+        gridCell.style.height = `${gridCellSize}px`
+        container.appendChild(gridCell);
 
-
-btn.addEventListener("click", () => {
-    let squareButton = prompt("Set number of squares");
-
-    if (squareButton > 100) {
-        return alert("Please choose a smaller number");
-    } 
-    else {
-        createGrid(squareButton);
-        
+        gridCell.addEventListener("mouseover", () => {
+            gridCell.style.backgroundColor = "black";
+        })
     }
-});
-button.appendChild(btn);
+}
 
+createGrid(100);
 
    
